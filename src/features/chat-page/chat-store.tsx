@@ -166,12 +166,7 @@ class ChatState {
 
       const response = await fetch("/api/chat", {
         method: "POST",
-        body: JSON.stringify({
-          ...formData,
-          systemPrompt: chatSetupV14.systemPrompt,
-          fewShotExamples: chatSetupV14.fewShotExamples,
-          chatParameters: chatSetupV14.chatParameters,
-        }),
+        body: formData,
         signal: controller.signal,
       });
 
