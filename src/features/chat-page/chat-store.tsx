@@ -23,6 +23,10 @@ import {
   ChatMessageModel,
   ChatThreadModel,
 } from "./chat-services/models";
+
+import chatSetupV14 from "@/ai-components/prompts/ChatSetup_V1.4.json";
+
+
 let abortController: AbortController = new AbortController();
 
 type chatStatus = "idle" | "loading" | "file upload";
@@ -162,7 +166,12 @@ class ChatState {
 
       const response = await fetch("/api/chat", {
         method: "POST",
-        body: formData,
+        body: JSON.stringify({
+          ...formData,
+          systemPrompt: chatSetupV14.systemPrompt,
+          fewShotExamples: chatSetupV14.fewShotExamples,
+          chatParameters: chatSetupV14.chatParameters,
+        }),
         signal: controller.signal,
       });
 
