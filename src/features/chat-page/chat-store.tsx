@@ -23,10 +23,6 @@ import {
   ChatMessageModel,
   ChatThreadModel,
 } from "./chat-services/models";
-
-import chatSetupV14 from "@/ai-components/prompts/ChatSetup_V1.4.json";
-
-
 let abortController: AbortController = new AbortController();
 
 type chatStatus = "idle" | "loading" | "file upload";
